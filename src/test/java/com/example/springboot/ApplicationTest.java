@@ -38,7 +38,11 @@ class ApplicationTest {
 
 
     }
-
+    @Test
+    void testHistory() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/api?post_input_text=testing")).andReturn();
+        mockMvc.perform(MockMvcRequestBuilders.get("/history").contentType(MediaType.ALL)).andExpect(content().string(containsString("testing")));
+    }
 
 
 
